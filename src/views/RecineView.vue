@@ -1,5 +1,5 @@
 <template>
-  <div class="dokum">
+  <div class="recine">
     <div v-if="loadd">
       <Loader />
     </div>
@@ -31,7 +31,7 @@
       <table class="table" id="table1">
         <thead>
         <tr>
-          <th scope="col">Hat</th>
+          <th scope="col">KA</th>
           <th scope="col">StokKod</th>
           <th scope="col">Miktar</th>
           <th scope="col"></th>
@@ -39,7 +39,7 @@
         </thead>
         <tbody>
         <tr v-for="(qub,i) in quList" :key="i" >
-          <td>{{qub.hat}}</td>
+          <td>{{2}}</td>
           <td>{{qub.stokKod}}</td>
           <td>{{qub.miktar}}</td>
           <td>
@@ -82,23 +82,23 @@ export default {
     return {
       quDto: {
         id: null,
-        tarih: null,
-        stokKod: null,
-        hat: null,
-        serino: null,
-        miktar: 0,
-        isemri: null,
-        aktif: null
+        Tarih: null,
+        StokKod: null,
+        Kampus: 0,
+        //serino: null,
+        Miktar: 0,
+        //isemri: null,
+        Aktif: null
       },
       quList: [{
         id: null,
-        tarih: null,
-        stokkod: null,
-        hat: null,
-        serino: null,
-        miktar: 0,
-        isemri: null,
-        aktif: null
+        Tarih: null,
+        StokKod: null,
+        Kampus: 0,
+        //serino: null,
+        Miktar: 0,
+        //isemri: null,
+        Aktif: null
       }],
       post:{
         kod:null,
@@ -106,7 +106,7 @@ export default {
       },
       buttonType: false,
       ReadOnly:false,
-      title: "Döküm Bunker Transfer",
+      title: "REÇİNE Transfer",
       divShowHide:true,
       read:null,
       seen:false,
@@ -125,7 +125,7 @@ export default {
   methods: {
     Kalemsil(id){
       if(confirm("Silinecek Eminmisiniz ?")){
-      fetch(this.resturl+"deptrasil/"+id).then(response => {
+      fetch(this.resturl+"deptrarecsil/"+id).then(response => {
         if(response.status == 200){
           alert("Silme Başarılı");
           this.Getqu();
@@ -152,7 +152,7 @@ export default {
        this.loadd=true
       await axios({
       method: "get",
-      url: this.netsisurl+"api/NetsApi/DepTra?id=3&huc="+this.hucre,
+      url: this.netsisurl+"api/NetsApi/DeptraRec?id=2&huc="+this.hucre,
       timeout: 1000 * 60, // Wait for 20 seconds
       headers: {
         "Content-Type": "application/json"
@@ -192,7 +192,7 @@ export default {
       this.huco1=true;
     },
     Getqu(){
-      fetch(this.resturl+"get-tra/3").then(response => response.json())
+      fetch(this.resturl+"get-rec/2").then(response => response.json())
     .then(data => {this.quList = data});
     },
     ListCount(){
@@ -202,8 +202,9 @@ export default {
     .reduce((a, b) => a + b, 0)
     },
     Kaydet(postt){
+      alert(postt.kod)
       const self=this;
-      axios.post(this.resturl+'barkod',postt)
+      axios.post(this.resturl+'barkodrec',postt)
       .then(response=>{
         if(response.status == 200){
           this.Getqu()
@@ -240,7 +241,7 @@ export default {
       }
       //if(snc>0){
         this.post.kod=str;
-        this.post.hat=3;
+        this.post.hat=2;
         this.Kaydet(this.post)
       //}
     },
@@ -255,7 +256,7 @@ export default {
     showt(){
       this.seen=false
       this.seent=true
-      this.title="Döküm Bunker Transfer"
+      this.title="REÇİNE Transfer"
       this.Getqu();
     },
     testqu(){

@@ -9,33 +9,39 @@
     </div>
     </div>
     <div v-if="auth">
-      <div style="margin:auto; width:99%; max-width:1300px" >
-  
       
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <router-link v-if="userper" class="nav-link" @click="menuaktive('Hat4')" :class="{active:menus.Hat4}" to="/manage">4.Hat</router-link>
+      <div style="margin:auto; width:99%; max-width:1300px;" >
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary" style="padding-left: 5px;">
+      <ul class="nav mr-auto">
+        
+        <li class="nav-item"  style="font-size: 20px !important;">
+          <router-link v-if="userper" style="margin-right:10px;"   :class="{active:menus.Hat4}" to="/manage">4.Hat </router-link>
         </li>
-       <li class="nav-item">
-         <router-link class="nav-link" @click="menuaktive('Robot')" :class="{active:menus.Robot}" to="/">Robot</router-link>
+        
+       <li class="nav-item" style="font-size: 20px !important;">
+         <router-link  style="margin-right:10px"  :class="{active:menus.Robot}" to="/">Robot </router-link>
        </li>
-       <li class="nav-item">
-         <router-link v-if="userper" class="nav-link" @click="menuaktive('Hat3')" :class="{active:menus.Hat3}" to="/dokset">3.Hat</router-link>
+       <li class="nav-item" style="font-size: 20px !important;">
+         <router-link v-if="userper"  style="margin-right:10px"  :class="{active:menus.Hat3}" to="/dokset">3.Hat</router-link>
        </li>
-       <li class="nav-item">
-         <router-link class="nav-link" @click="menuaktive('Dokum')" :class="{active:menus.Dokum}" to="/dokum"> Döküm | </router-link>
+       <li class="nav-item"  style="font-size: 20px !important;">
+         <router-link  style="margin-right:10px"  :class="{active:menus.Dokum}" to="/dokum"> Döküm  </router-link>
+         
+       </li>
+       <li class="nav-item" style="font-size: 20px !important;">
+        <router-link  style="margin-right:10px"  :class="{active:menus.Recine}" to="/recine"> Reçine  </router-link>
        </li>
       </ul>
-        <ul class="navbar-nav" style="float:right">
-              <li class="nav-item" style="padding-top:7px">
-                  <h5>{{LoggedUser}}</h5>
-              </li>
-              <li class="nav-item">
-                  <button class="btn-danger" style="margin-top:5px;margin-left:10px" @click="logout()">Çıkış</button>
-              </li>
-          </ul>
+      <ul class="navbar-nav" style="float:right;padding-right: 5px;">
+      <li class="nav-item" style="padding-top:7px">
+          <h5>{{LoggedUser}}</h5>
+      </li>
+      <li class="nav-item">
+          <button class="btn-danger" style="margin-top:5px;margin-left:10px" @click="logout()">Çıkış</button>
+      </li>
+    </ul>
     </nav>
+    
         <router-view/>
     </div>
   </div>
@@ -78,6 +84,7 @@
         this.menus['Dokum']=false;
         this.menus['Hat3']=false;
         this.menus['Hat4']=false;
+        this.menus['Recine']=false;
         this.menus[type]=true;
       },
     checkuser(){
@@ -122,6 +129,13 @@
     },
       updated(){
         this.checkuser()
+        const url = window.location.href;
+        const lastParam = url.split("/").slice(-1)[0];
+        this.menuaktive(lastParam);
+      },
+      refreshed()
+      {
+        
       }
     }
     
@@ -147,9 +161,8 @@
     font-weight: bold;
     color: #2c3e50;
   }
-  
   nav a.router-link-exact-active {
-    color: #42b983;
+    color: #e0eae5;
   }
   
   body {

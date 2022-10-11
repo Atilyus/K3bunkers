@@ -53,7 +53,6 @@
           <hr>
           <button type="button" class="btn-info"  @click="showt">Geri git</button>
         </div >
-         
       </div>
     </div>
     </div>
@@ -134,6 +133,7 @@ export default {
       }
     },
     async Deptra(){
+      
       if(this.hucre=="" || this.hucre==null)
       {
         alert("HÜCRE SEÇİLMEMİŞ")
@@ -149,7 +149,7 @@ export default {
        this.loadd=true
       await axios({
       method: "get",
-      url: this.netsisurl+"api/NetsApi/DepTra?id=4",
+      url: this.netsisurl+"api/NetsApi/DepTra?id=4&huc="+this.hucre,
       timeout: 1000 * 60, // Wait for 20 seconds
       headers: {
         "Content-Type": "application/json"
@@ -197,14 +197,16 @@ export default {
       const self=this;
       axios.post(this.resturl+'barkod',postt)
       .then(response=>{
+        
         if(response.status == 200){
           this.Getqu()
           this.showt()
         }
         else{
-          alert("Hata Kayıt Yapılamadı !");
+          alert(response.statusText+" Hata Kayıt Yapılamadı !");
         }
       }).catch(error=>{
+        
         alert("Hata Kayıt Yapılamadı ! "+error);
         self.clear()
       });
