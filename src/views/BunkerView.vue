@@ -123,7 +123,7 @@ export default {
       if(confirm("Silinecek Eminmisiniz ?")){
       fetch(this.resturl+"deptrasil/"+id).then(response => {
         if(response.status == 200){
-          alert("Silme Başarılı");
+          //alert("Silme Başarılı");
           this.Getqu();
         }else{
           alert("Hata Silme Yapılamadı !");
@@ -221,6 +221,15 @@ export default {
         this.seen=false
         this.seent=true
         return
+      }
+      var oss =str.split("*");
+      if(this.quList.length>0 && oss[0]!=this.quList[0].stokKod)
+      {
+        alert("Farklı Stok Okutuldu ! Önce Kayıt yapınız !")
+        this.okun=null;
+        this.seen=false
+        this.seent=true
+        return;
       }
       //var qty=str.length;
       //var snc = str.indexOf('/');
