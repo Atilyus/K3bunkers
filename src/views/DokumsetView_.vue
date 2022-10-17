@@ -1,18 +1,10 @@
 <template>
   <div class="dokset">
-    <div v-if="!dokum" style="padding-bottom:10px" class="container">
-        <h4 style="padding-top:5px">Hat Seçiniz.</h4>
-        <hr>
-        <button style="margin:5px" class="btn-lg btn-secondary" @click="secilihat(1)">Döküm 1</button>
-        <button style="margin:5px" class="btn-lg btn-secondary" @click="secilihat(2)">Döküm 2</button>
-        <button style="margin:5px" class="btn-lg btn-secondary" @click="secilihat(3)">Döküm 3</button>
-      </div>
-    <div v-if="dokum"  class="container">
+    
+    <div class="container">
       <br>
       <h3 style="text-align: center;">{{title}}</h3>
-      <button style="margin:5px" class="btn-lg btn-warning" @click="dokum=false">Hat Değiştir</button>
       <hr>
-      
       <div style="float:right">
         
           <button type="button" class="btn btn-info" v-if="!seen" @click="showa">Tanımlama</button>
@@ -302,7 +294,7 @@ export default {
       },
       buttonType: false,
       ReadOnly:false,
-      title: "Döküm Bunker Silo İzleme",
+      title: "Döküm Bunker Silo Tanımlama",
       divShowHide:true,
       isemri:null,
       seen:false,
@@ -311,22 +303,20 @@ export default {
       modalShow: false,
       search: '',
       picked:null,
-      dhat:0,
-      dokum:false,
       resturl:"http://10.45.0.97:5000/",
       netsisurl:"http://10.50.60:4000/"
     }
   },
   methods: {
     async getSilos() {
-      const response = await fetch(this.resturl+"bunker/"+this.dhat);
+      const response = await fetch(this.resturl+"bunker/3");
       const data = await response.json();
       this.quDto=data;
       this.silosecim();
     this.geties();
     },
     async geties(){
-       await fetch(this.resturl+"isemri/"+this.dhat).then(response => response.json())
+       await fetch(this.resturl+"isemri/3").then(response => response.json())
     .then(data => {this.isemrilist = data});
     },
     async getraw(){
@@ -356,7 +346,7 @@ export default {
     AddBS(){
       if(confirm(this.quDto.order+" Nolu iş emrine Kayıt yapılacak ?")){
       this.quDto.id=1;
-      this.quDto.line=this.dhat;
+      this.quDto.line=3;
         axios.post(this.resturl+'add-bs',this.quDto).then(function(response) {
         if(response.status == 200){
           alert("Kayıt Başarılı");
@@ -370,27 +360,17 @@ export default {
       this.getSilos()
       this.seen=true
       this.seent=false
-      this.title="Döküm "+this.dhat+" Bunker Silo Tanımlama"
+      this.title="Döküm Bunker Silo Tanımlama"
     },
     showt(){
       if(confirm("Seçimler kaybolacak ! Devam Edilsinmi ?")){
       this.getSilos()
       this.seen=false
       this.seent=true
-      this.title="Döküm "+this.dhat+" Bunker Silo İzleme"}
+      this.title="Döküm Bunker Durumları"}
     },
     findname(id){
         return this.rawlist.find(x=> x.stoK_ADI==id).stoK_ADI
-    },
-    secilihat(id){
-      this.dhat=id
-      this.dokum=true
-      this.title="Döküm "+this.dhat+" Bunker Silo İzleme"
-      this.seen=false
-      this.seent=true
-      this.getSilos();
-      this.geties();
-    this.getraw();
     },
     PickRaw(stok){
       if(stok=="BOŞ" || stok=='BOS' || stok=='')
@@ -421,7 +401,7 @@ export default {
       this.SiloRenk(stok,'s6')
       }
       if(this.picked==="s7"){
-      this.quDto.s7=stok;
+      self.quDto.s7=stok;
       this.SiloRenk(stok,'s7')
       }
       if(this.picked==="s8"){
@@ -448,8 +428,8 @@ export default {
     },
   },
   mounted() {
-    //this.getSilos();
-    //this.getraw();
+    this.getSilos();
+    this.getraw();
   },
   computed:{
       filteredRows() {

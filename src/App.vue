@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div v-if="!auth">
-      <div class="loginBox"> <img class="user" src="https://i.ibb.co/yVGxFPR/2.png" alt="" height="100" width="100">
+      <div class="loginBox"> <img class="user" src="../src/assets/2.png" alt="" height="100" width="100">
       <h3>Lütfen Giriş Yapınız</h3>
       <form action="">
           <div class="inputBox"> <input id="uname" v-model="user.username" type="text" name="Username" placeholder="isim.soyisim"> <input v-model="user.password" id="pass" type="password" name="Password" placeholder="Şifre"> </div> <input @click="login()" type="button" name="" value="Login">
@@ -15,14 +15,14 @@
       <ul class="nav mr-auto">
         
         <li class="nav-item"  style="font-size: 20px !important;">
-          <router-link v-if="userper" style="margin-right:10px;"   :class="{active:menus.Hat4}" to="/manage">4.Hat </router-link>
+          <router-link v-if="userper" style="margin-right:10px;"   :class="{active:menus.Hat4}" to="/manage">Robot Tanım </router-link>
         </li>
         
        <li class="nav-item" style="font-size: 20px !important;">
          <router-link  style="margin-right:10px"  :class="{active:menus.Robot}" to="/">Robot </router-link>
        </li>
        <li class="nav-item" style="font-size: 20px !important;">
-         <router-link v-if="userper"  style="margin-right:10px"  :class="{active:menus.Hat3}" to="/dokset">3.Hat</router-link>
+         <router-link v-if="userper"  style="margin-right:10px"  :class="{active:menus.Hat3}" to="/dokset">Döküm Tanım</router-link>
        </li>
        <li class="nav-item"  style="font-size: 20px !important;">
          <router-link  style="margin-right:10px"  :class="{active:menus.Dokum}" to="/dokum"> Döküm  </router-link>
@@ -34,7 +34,7 @@
       </ul>
       <ul class="navbar-nav" style="float:right;padding-right: 5px;">
       <li class="nav-item" style="padding-top:7px">
-          <h5>{{LoggedUser}}</h5>
+          <h5 style="color:blueviolet">{{LoggedUser}}</h5>
       </li>
       <li class="nav-item">
           <button class="btn-danger" style="margin-top:5px;margin-left:10px" @click="logout()">Çıkış</button>

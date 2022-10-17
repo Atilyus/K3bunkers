@@ -3,10 +3,17 @@
     <div v-if="loadd">
       <Loader />
     </div>
-    <div v-if="!loadd">
-    <div class="container">
-      <h4 style="text-align: lcenter; padding-top:5px; height: 20px;">{{title}}</h4>
-     
+    <div v-if="!loadd"  class="container">
+      <div v-if="!dokum">
+        <h4 style="padding-top:5px">Kampüs Seçiniz.</h4>
+        <hr>
+        <button style="margin:5px" class="btn-lg btn-secondary" @click="secilihat(1)">Kampüs 1</button>
+        <button style="margin:5px" class="btn-lg btn-secondary" @click="secilihat(2)">Kampüs 2</button>
+      </div>
+    <div v-if="dokum"  style="padding-top:5px">
+      <div style="background-color:darkcyan;height: 33px;width:auto;max-width:300px;margin: auto;">
+      <h4 @click="ksec()" style="text-align: lcenter; padding-top:5px; height: 20px;">{{title}}</h4>
+     </div>
       <div v-if="huco1">
         <hr>
         <input type="text" v-focus class="form-control" v-model="hucre" @input="hucoku(hucre)">
@@ -119,7 +126,9 @@ export default {
       netsisurl:"http://10.50.0.60:4000/",
       loadd:false,
       rowcount:null,
-      topkg:0
+      topkg:0,
+      dokum:false,
+      kampus:0
     }
   },
   methods: {
@@ -152,7 +161,7 @@ export default {
        this.loadd=true
       await axios({
       method: "get",
-      url: this.netsisurl+"api/NetsApi/DeptraRec?id=2&huc="+this.hucre,
+      url: this.netsisurl+"api/NetsApi/DeptraRec?id="+this.kampus+"&huc="+this.hucre,
       timeout: 1000 * 60, // Wait for 20 seconds
       headers: {
         "Content-Type": "application/json"
@@ -191,8 +200,17 @@ export default {
       this.hucre=null;
       this.huco1=true;
     },
+    secilihat(id){
+      this.dokum=true
+      this.kampus=id
+      this.title="Kampüs "+this.kampus+" Reçine Transfer"
+      this.Getqu();
+    },
+    ksec(){
+      this.dokum=false
+    },
     Getqu(){
-      fetch(this.resturl+"get-rec/2").then(response => response.json())
+      fetch(this.resturl+"get-rec/"+this.kampus).then(response => response.json())
     .then(data => {this.quList = data});
     },
     ListCount(){
@@ -250,7 +268,7 @@ export default {
       }
       //if(snc>0){
         this.post.kod=str;
-        this.post.hat=2;
+        this.post.hat=this.kampus;
         this.Kaydet(this.post)
       //}
     },
@@ -284,7 +302,7 @@ export default {
     }
   },
   mounted() {
-    this.Getqu();
+    //this.Getqu();
   },
   updated(){
     this.ListCount();

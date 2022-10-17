@@ -3,20 +3,10 @@
     <div v-if="loadd">
       <Loader />
     </div>
-    <div v-if="!loadd"  class="container">
-      <div v-if="!dokum">
-        <h4 style="padding-top:5px">Hat Seçiniz.</h4>
-        <hr>
-        <button style="margin:5px" class="btn-lg btn-secondary" @click="secilihat(1)">Döküm 1</button>
-        <button style="margin:5px" class="btn-lg btn-secondary" @click="secilihat(2)">Döküm 2</button>
-        <button style="margin:5px" class="btn-lg btn-secondary" @click="secilihat(3)">Döküm 3</button>
-      </div>
-    <div v-if="dokum" style="padding-top:5px">
-      <div style="background-color:darkcyan;height: 33px;width:auto;max-width:300px;margin: auto;">
-        
-      <h4 @click="dsec()" style="text-align: lcenter; padding-top:5px; height: 20px;;width: auto;margin:auto">{{title}}</h4>
+    <div v-if="!loadd">
+    <div class="container">
+      <h4 style="text-align: lcenter; padding-top:5px; height: 20px;">{{title}}</h4>
      
-    </div>
       <div v-if="huco1">
         <hr>
         <input type="text" v-focus class="form-control" v-model="hucre" @input="hucoku(hucre)">
@@ -129,9 +119,7 @@ export default {
       netsisurl:"http://10.50.0.60:4000/",
       loadd:false,
       rowcount:null,
-      topkg:0,
-      dhat:0,
-      dokum:false
+      topkg:0
     }
   },
   methods: {
@@ -164,7 +152,7 @@ export default {
        this.loadd=true
       await axios({
       method: "get",
-      url: this.netsisurl+"api/NetsApi/DepTra?id="+this.dhat+"&huc="+this.hucre,
+      url: this.netsisurl+"api/NetsApi/DepTra?id=3&huc="+this.hucre,
       timeout: 1000 * 60, // Wait for 20 seconds
       headers: {
         "Content-Type": "application/json"
@@ -190,15 +178,6 @@ export default {
     getlod(){
       this.loadd=!this.loadd;
     },
-    secilihat(id){
-      this.dokum=true
-      this.dhat=id
-      this.title="Döküm "+this.dhat+" Bunker Transfer"
-      this.Getqu();
-    },
-    dsec(){
-      this.dokum=false
-    },
     hucoa(){
       this.huco1=true;
       this.huco=true;
@@ -213,7 +192,7 @@ export default {
       this.huco1=true;
     },
     Getqu(){
-      fetch(this.resturl+"get-tra/"+this.dhat).then(response => response.json())
+      fetch(this.resturl+"get-tra/3").then(response => response.json())
     .then(data => {this.quList = data});
     },
     ListCount(){
@@ -271,7 +250,7 @@ export default {
       }
       //if(snc>0){
         this.post.kod=str;
-        this.post.hat=this.dhat;
+        this.post.hat=3;
         this.Kaydet(this.post)
       //}
     },
@@ -286,7 +265,7 @@ export default {
     showt(){
       this.seen=false
       this.seent=true
-      this.title="Döküm "+this.dhat+" Bunker Transfer"
+      this.title="Döküm Bunker Transfer"
       this.Getqu();
     },
     testqu(){
@@ -305,7 +284,7 @@ export default {
     }
   },
   mounted() {
-    //this.Getqu();
+    this.Getqu();
   },
   updated(){
     this.ListCount();
