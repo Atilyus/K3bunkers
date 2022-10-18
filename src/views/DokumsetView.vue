@@ -27,7 +27,7 @@
               </select>
        </div>
       <table class="table" id="table1">
-        <thead>
+        <thead v-if="dhat!=1">
         <tr>
           <th scope="col">1.Silo</th>
           <th scope="col">2.Silo</th>
@@ -37,7 +37,20 @@
           <th scope="col">6.Silo</th>
           <th scope="col">7.Silo</th>
           <th scope="col">8.Silo</th>
+          <th v-if="dhat!=2" scope="col">9.Silo</th>
+          <th scope="col">Filler</th>
+        </tr>
+        </thead>
+        <thead v-if="dhat==1" >
+        <tr>
           <th scope="col">9.Silo</th>
+          <th scope="col">10.Silo</th>
+          <th scope="col">11.Silo</th>
+          <th scope="col">12.Silo</th>
+          <th scope="col">13.Silo</th>
+          <th scope="col">14.Silo</th>
+          <th scope="col">15.Silo</th>
+          <th scope="col">16.Silo</th>
           <th scope="col">Filler</th>
         </tr>
         </thead>
@@ -76,7 +89,7 @@
             <canvas v-if="picklist.s8" width=50 height=80 class="redstyle"></canvas>
             <canvas v-if="!picklist.s8"  width=50 height=80 class="grestyle"></canvas>
             </td>
-            <td>
+            <td v-if="dhat==3">
             <canvas v-if="picklist.s9" width=50 height=80 class="redstyle"></canvas>
             <canvas v-if="!picklist.s9"  width=50 height=80 class="grestyle"></canvas>
             </td>
@@ -94,7 +107,7 @@
           <td>{{quDto.s6}}</td>
           <td>{{quDto.s7}}</td>
           <td>{{quDto.s8}}</td>
-          <td>{{quDto.s9}}</td>
+          <td v-if="dhat==3">{{quDto.s9}}</td>
           <td>{{quDto.filler}}</td>
         </tr>
         <tr>
@@ -106,7 +119,7 @@
             <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s6')">Seç</button></td>
             <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s7')">Seç</button></td>
             <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s8')">Seç</button></td>
-            <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s9')">Seç</button></td>
+            <td v-if="dhat==3"><button class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s9')">Seç</button></td>
             <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('filler')">Seç</button></td>
         </tr>
         </tbody>
@@ -158,7 +171,7 @@
               <h5>{{quDto.order}}</h5>
           </div>
         <table class="table" id="table3">
-        <thead>
+        <thead v-if="dhat!=1">
         <tr>
           <th scope="col">1.Silo</th>
           <th scope="col">2.Silo</th>
@@ -168,7 +181,20 @@
           <th scope="col">6.Silo</th>
           <th scope="col">7.Silo</th>
           <th scope="col">8.Silo</th>
+          <th v-if="dhat!=2" scope="col">9.Silo</th>
+          <th scope="col">filler</th>
+        </tr>
+        </thead>
+        <thead v-if="dhat==1" >
+        <tr>
           <th scope="col">9.Silo</th>
+          <th scope="col">10.Silo</th>
+          <th scope="col">11.Silo</th>
+          <th scope="col">12.Silo</th>
+          <th scope="col">13.Silo</th>
+          <th scope="col">14.Silo</th>
+          <th scope="col">15.Silo</th>
+          <th scope="col">16.Silo</th>
           <th scope="col">filler</th>
         </tr>
         </thead>
@@ -207,11 +233,11 @@
             <canvas v-if="picklist.s8" width=50 height=80 class="redstyle"></canvas>
             <canvas v-if="!picklist.s8"  width=50 height=80 class="grestyle"></canvas>
             </td>
-            <td>
+            <td v-if="dhat==3">
             <canvas v-if="picklist.s9" width=50 height=80 class="redstyle"></canvas>
             <canvas v-if="!picklist.s9"  width=50 height=80 class="grestyle"></canvas>
             </td>
-            <td>
+            <td >
             <canvas v-if="picklist.filler" width=50 height=80 class="redstyle"></canvas>
             <canvas v-if="!picklist.filler"  width=50 height=80 class="grestyle"></canvas>
             </td>
@@ -225,8 +251,8 @@
             <td>{{quDto.s6}}</td>
             <td>{{quDto.s7}}</td>
             <td>{{quDto.s8}}</td>
-            <td>{{quDto.s9}}</td>
-            <td>{{quDto.filler}}</td>
+            <td v-if="dhat==3">{{quDto.s9}}</td>
+            <td >{{quDto.filler}}</td>
 
         </tr>
         </tbody>
