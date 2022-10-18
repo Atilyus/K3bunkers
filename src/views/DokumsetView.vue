@@ -383,6 +383,8 @@ export default {
       if(confirm(this.quDto.order+" Nolu iş emrine Kayıt yapılacak ?")){
       this.quDto.id=1;
       this.quDto.line=this.dhat;
+      let tt =this.quDto.order.toString().split(" ");
+      this.quDto.order=tt[0];
         axios.post(this.resturl+'add-bs',this.quDto).then(function(response) {
         if(response.status == 200){
           alert("Kayıt Başarılı");
