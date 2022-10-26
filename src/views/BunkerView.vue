@@ -18,8 +18,8 @@
     
       <div >
         <hr>
-      <button type="button" class="btn-success" style="margin-right:40px" v-if="seent" @click="Deptra()">Kaydet</button>
-      <button type="button" class="btn-primary" v-if="!seen" @click="showa">Barkod Oku</button>
+      <button type="button" class="btn btn-success" style="margin-right:40px" v-if="seent" @click="Deptra()">Kaydet</button>
+      <button type="button" class="btn btn-primary" v-if="!seen" @click="showa">Barkod Oku</button>
       </div>
       <br><div v-if="!seen" >
         <h6 style="float:left" class="form-check-label">Adet: {{rowcount}} </h6>
@@ -41,7 +41,7 @@
           <td>{{qub.stokKod}}</td>
           <td>{{qub.miktar}}</td>
           <td>
-            <button @click="Kalemsil(qub.id)" class="btn-danger btn-xs">Sil</button>
+            <button @click="Kalemsil(qub.id)" class="btn btn-danger btn-xs">Sil</button>
           </td>
         </tr>
         </tbody>

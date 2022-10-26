@@ -7,9 +7,9 @@
       <div v-if="!dokum">
         <h4 style="padding-top:5px">Hat Seçiniz.</h4>
         <hr>
-        <button style="margin:5px" class="btn-lg btn-secondary" @click="secilihat(1)">Döküm 1</button>
-        <button style="margin:5px" class="btn-lg btn-secondary" @click="secilihat(2)">Döküm 2</button>
-        <button style="margin:5px" class="btn-lg btn-secondary" @click="secilihat(3)">Döküm 3</button>
+        <button style="margin:5px" class="btn btn-secondary" @click="secilihat(1)">Döküm 1</button>
+        <button style="margin:5px" class="btn btn-secondary" @click="secilihat(2)">Döküm 2</button>
+        <button style="margin:5px" class="btn btn-secondary" @click="secilihat(3)">Döküm 3</button>
       </div>
     <div v-if="dokum" style="padding-top:5px">
       <div style="background-color:darkcyan;height: 33px;width:auto;max-width:300px;margin: auto;">
@@ -53,7 +53,7 @@
           <td>{{qub.stokKod}}</td>
           <td>{{qub.miktar}}</td>
           <td>
-            <button @click="Kalemsil(qub.id)" class="btn-danger btn-xs">Sil</button>
+            <button @click="Kalemsil(qub.id)" class="btn btn-danger btn-xs">Sil</button>
           </td>
         </tr>
         </tbody>

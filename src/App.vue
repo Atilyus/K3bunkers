@@ -10,20 +10,29 @@
     </div>
     <div v-if="auth">
       
+      
       <div style="margin:auto; width:99%; max-width:1300px;" >
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary" style="padding-left: 5px;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="padding-left: 5px;">
       <ul class="nav mr-auto">
-        
-        <li class="nav-item"  style="font-size: 20px !important;">
-          <router-link v-if="userper" style="margin-right:10px;"   :class="{active:menus.Hat4}" to="/manage">Robot Tanım </router-link>
+        <!--
+        <li v-if="userper" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white">
+            Yönetim
+          </a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><router-link style="margin-right:10px;" :class="{active:menus.Hat4}" to="/manage">Robot Tanım </router-link></li>
+            <li class="dropdown-item"><router-link style="margin-right:10px"  :class="{active:menus.Hat3}" to="/dokset">Döküm Tanım</router-link></li>
+            <li class="dropdown-item"><router-link style="margin-right:10px"  :class="{active:menus.Bunrap}" to="/bunrap">Bunker Rapor</router-link></li>
+          </ul>
         </li>
-        
+          -->
+            <li v-if="userper" class="nav-item"><router-link style="margin-right:10px;" :class="{active:menus.Hat4}" to="/manage">Robot Tanım </router-link></li>
+            <li v-if="userper" class="nav-item"><router-link style="margin-right:10px"  :class="{active:menus.Hat3}" to="/dokset">Döküm Tanım</router-link></li>
+            <li v-if="userper" class="nav-item"><router-link style="margin-right:10px"  :class="{active:menus.Bunrap}" to="/bunrap">Bunker Rapor</router-link></li>
        <li class="nav-item" style="font-size: 20px !important;">
          <router-link  style="margin-right:10px"  :class="{active:menus.Robot}" to="/">Robot </router-link>
        </li>
-       <li class="nav-item" style="font-size: 20px !important;">
-         <router-link v-if="userper"  style="margin-right:10px"  :class="{active:menus.Hat3}" to="/dokset">Döküm Tanım</router-link>
-       </li>
+       
        <li class="nav-item"  style="font-size: 20px !important;">
          <router-link  style="margin-right:10px"  :class="{active:menus.Dokum}" to="/dokum"> Döküm  </router-link>
          
@@ -31,13 +40,14 @@
        <li class="nav-item" style="font-size: 20px !important;">
         <router-link  style="margin-right:10px"  :class="{active:menus.Recine}" to="/recine"> Reçine  </router-link>
        </li>
+       
       </ul>
       <ul class="navbar-nav" style="float:right;padding-right: 5px;">
       <li class="nav-item" style="padding-top:7px">
           <h5 style="color:blueviolet">{{LoggedUser}}</h5>
       </li>
       <li class="nav-item">
-          <button class="btn-danger" style="margin-top:5px;margin-left:10px" @click="logout()">Çıkış</button>
+          <button class="btn btn-danger" style="margin-top:5px;margin-left:10px" @click="logout()">Çıkış</button>
       </li>
     </ul>
     </nav>
@@ -48,7 +58,7 @@
     </div>
   </template>
   <script>
-    import 'bootstrap.min.css'
+  import 'bootstrap/dist/css/bootstrap.min.css';
   import axios from 'axios'
   import { useCookies } from "vue3-cookies";
   export default {
@@ -60,6 +70,7 @@
         Dokum:false,
         Hat3:false,
         Hat4:true,
+        Bunrap:true
         },
         user:{
           username: null,
@@ -85,6 +96,7 @@
         this.menus['Hat3']=false;
         this.menus['Hat4']=false;
         this.menus['Recine']=false;
+        this.menus['Bunrap']=false;
         this.menus[type]=true;
       },
     checkuser(){

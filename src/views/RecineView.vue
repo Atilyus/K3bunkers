@@ -7,8 +7,8 @@
       <div v-if="!dokum">
         <h4 style="padding-top:5px">Kampüs Seçiniz.</h4>
         <hr>
-        <button style="margin:5px" class="btn-lg btn-secondary" @click="secilihat(1)">Kampüs 1</button>
-        <button style="margin:5px" class="btn-lg btn-secondary" @click="secilihat(2)">Kampüs 2</button>
+        <button style="margin:5px" class="btn btn-secondary" @click="secilihat(1)">Kampüs 1</button>
+        <button style="margin:5px" class="btn btn-secondary" @click="secilihat(2)">Kampüs 2</button>
       </div>
     <div v-if="dokum"  style="padding-top:5px">
       <div style="background-color:darkcyan;height: 33px;width:auto;max-width:300px;margin: auto;">
@@ -50,7 +50,7 @@
           <td>{{qub.stokKod}}</td>
           <td>{{qub.miktar}}</td>
           <td>
-            <button @click="Kalemsil(qub.id)" class="btn-danger btn-xs">Sil</button>
+            <button @click="Kalemsil(qub.id)" class="btn btn-danger btn-xs">Sil</button>
           </td>
         </tr>
         </tbody>

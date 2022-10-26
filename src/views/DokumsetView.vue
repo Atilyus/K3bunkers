@@ -3,9 +3,9 @@
     <div v-if="!dokum" style="padding-bottom:10px" class="container">
         <h4 style="padding-top:5px">Hat Seçiniz.</h4>
         <hr>
-        <button style="margin:5px" class="btn-lg btn-secondary" @click="secilihat(1)">Döküm 1</button>
-        <button style="margin:5px" class="btn-lg btn-secondary" @click="secilihat(2)">Döküm 2</button>
-        <button style="margin:5px" class="btn-lg btn-secondary" @click="secilihat(3)">Döküm 3</button>
+        <button style="margin:5px" class="btn btn-secondary" @click="secilihat(1)">Döküm 1</button>
+        <button style="margin:5px" class="btn btn-secondary" @click="secilihat(2)">Döküm 2</button>
+        <button style="margin:5px" class="btn btn-secondary" @click="secilihat(3)">Döküm 3</button>
       </div>
     <div v-if="dokum"  class="container">
       <br>
@@ -111,16 +111,16 @@
           <td>{{quDto.filler}}</td>
         </tr>
         <tr>
-            <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s1')">Seç</button></td>
-            <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s2')">Seç</button></td>
-            <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s3')">Seç</button></td>
-            <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s4')">Seç</button></td>
-            <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s5')">Seç</button></td>
-            <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s6')">Seç</button></td>
-            <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s7')">Seç</button></td>
-            <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s8')">Seç</button></td>
-            <td v-if="dhat==3"><button class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s9')">Seç</button></td>
-            <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('filler')">Seç</button></td>
+            <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s1')">Seç</button></td>
+            <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s2')">Seç</button></td>
+            <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s3')">Seç</button></td>
+            <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s4')">Seç</button></td>
+            <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s5')">Seç</button></td>
+            <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s6')">Seç</button></td>
+            <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s7')">Seç</button></td>
+            <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s8')">Seç</button></td>
+            <td v-if="dhat==3"><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('s9')">Seç</button></td>
+            <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="pick('filler')">Seç</button></td>
         </tr>
         </tbody>
       </table>

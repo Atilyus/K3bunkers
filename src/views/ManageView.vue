@@ -48,9 +48,9 @@
           <td>{{quDto.s3}}</td>
         </tr>
         <tr>
-            <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#StokModal" @click="pick('s1')">Seç</button></td>
-            <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#StokModal" @click="pick('s2')">Seç</button></td>
-            <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#StokModal" @click="pick('s3')">Seç</button></td>
+            <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#StokModal" @click="pick('s1')">Seç</button></td>
+            <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#StokModal" @click="pick('s2')">Seç</button></td>
+            <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#StokModal" @click="pick('s3')">Seç</button></td>
         </tr>
         </tbody>
       </table>
@@ -81,7 +81,7 @@
                   <td>{{qub.stoK_KODU}}</td>
                   <td>{{findname(qub.stoK_ADI)}}</td>
                   <td>
-                    <button type="button" @click="PickRaw(qub.stoK_KODU)" class="btn-secondary btn-xs" data-bs-dismiss="modal">Seç</button>
+                    <button type="button" @click="PickRaw(qub.stoK_KODU)" class="btn btn-secondary btn-xs" data-bs-dismiss="modal">Seç</button>
                   </td>
                 </tr>
                 </tbody>
