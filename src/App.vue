@@ -29,6 +29,7 @@
             <li v-if="userper" class="nav-item"><router-link style="margin-right:10px;" :class="{active:menus.Hat4}" to="/manage">Robot Tanım </router-link></li>
             <li v-if="userper" class="nav-item"><router-link style="margin-right:10px"  :class="{active:menus.Hat3}" to="/dokset">Döküm Tanım</router-link></li>
             <li v-if="userper" class="nav-item"><router-link style="margin-right:10px"  :class="{active:menus.Bunrap}" to="/bunrap">Bunker Rapor</router-link></li>
+            <li v-if="userper" class="nav-item"><router-link style="margin-right:10px"  :class="{active:menus.Uretim}" to="/uretim">Üretim</router-link></li>
        <li class="nav-item" style="font-size: 20px !important;">
          <router-link  style="margin-right:10px"  :class="{active:menus.Robot}" to="/">Robot </router-link>
        </li>
@@ -70,6 +71,7 @@
         Dokum:false,
         Hat3:false,
         Hat4:true,
+        Uretim:false,
         Bunrap:true
         },
         user:{

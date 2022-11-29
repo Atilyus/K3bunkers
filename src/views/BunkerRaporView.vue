@@ -28,7 +28,7 @@
             <td>
               <select class="form-control" style="max-width:200px;margin:auto">
         <option value="">Ay Seçin</option>
-        <option @click="geties(i+1)" v-for="(qub,i) in quList" :key="i">
+        <option v-on:click="geties(i+1)" v-for="(qub,i) in quList" :key="i">
           {{ qub }}
         </option>
       </select>
@@ -106,9 +106,10 @@ export default {
       this.bunlist=data;
     },
     async geties(ay){
+      console.log("ay girdi")
       this.ielist=null
       this.bunlist=null
-       await fetch(this.resturl+"ayielist/"+this.dhat+"/"+ay).then(response => response.json())
+      await fetch(this.resturl+"ayielist/"+this.dhat+"/"+ay).then(response => response.json())
     .then(data => {this.ielist = data});
     },
     async aynum(){
@@ -179,6 +180,8 @@ export default {
     this.aynum()
     //this.getSilos();
     //this.getraw();
+  },
+  updated(){
   },
   computed:{
       filteredRows() {

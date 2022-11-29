@@ -1,0 +1,7 @@
+select * from T_AN_FORMULAS where F_ID='486'
+
+select * from T_AN_FORMULA_DETAILS where F_ID_T_AN_FORMULAS='486'
+
+select * from T_AN_PRODUCT_ORDERS where f_code= '8001140'
+
+select * from T_AN_MATERIALS s where s.F_ID in ('10007','10075','10287','10289','10246')
