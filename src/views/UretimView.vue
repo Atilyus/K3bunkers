@@ -42,7 +42,7 @@
         </tr>
         </tbody>
       </table>
-      <div>
+      <div v-if="!isDisabled">
         <button type="button" class="btn btn-primary" style="margin:5px" @click="AddBS()" >Kaydet</button>
         <button type="button" class="btn btn-secondary" style="margin:5px" @click="iptal()">İptal</button>
       </div>
@@ -119,7 +119,7 @@ export default ({
             StokKod: null,
             StokAd: null
             }],
-            resturl:"http://localhost:5000/",//10.45.0.97
+            resturl:"http://10.45.0.97:5000/",//10.45.0.97
             netsisurl:"http://10.50.0.60:4000/",
             User:cookies.get('username')
         }
