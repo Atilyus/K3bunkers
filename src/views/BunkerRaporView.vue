@@ -26,7 +26,7 @@
         <tbody>
           <tr>
             <td>
-              <select class="form-control" style="max-width:200px;margin:auto">
+              <select id="1" @change="geties" class="form-control" style="max-width:200px;margin:auto">
         <option value="">Ay Seçin</option>
         <option v-on:click="geties(i+1)" v-for="(qub,i) in quList" :key="i">
           {{ qub }}
@@ -34,9 +34,9 @@
       </select>
             </td>
             <td>
-              <select class="form-control" style="max-width:300px;margin:auto" aria-placeholder="İŞ Emri Seçin">
+              <select @change="getSilos" id="2" class="form-control" style="max-width:300px;margin:auto" aria-placeholder="İŞ Emri Seçin">
         <option value="">İş Emri Seçin</option>
-        <option @click="getSilos(qub)" v-for="(qub,i) in ielist" :key="i">
+        <option v-for="(qub,i) in ielist" :key="i">
           {{ qub }}
         </option>
       </select>
@@ -100,13 +100,15 @@ export default {
     }
   },
   methods: {
-    async getSilos(isem) {
+    async getSilos(e) {
+      let isem= e.target.options[e.target.options.selectedIndex].text
       const response = await fetch(this.resturl+"raporbun/"+isem);
       const data = await response.json();
       this.bunlist=data;
     },
-    async geties(ay){
-      console.log("ay girdi")
+    async geties(e){
+      let ay = e.target.options[e.target.options.selectedIndex].index
+      console.log("ay girdi "+ay)
       this.ielist=null
       this.bunlist=null
       await fetch(this.resturl+"ayielist/"+this.dhat+"/"+ay).then(response => response.json())
