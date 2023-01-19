@@ -172,6 +172,7 @@ export default ({
             });
             this.Onaysor(this.ielist[0].kod)
             this.urun=this.ielist[0].urun
+            this.hatisemri=this.ielist[0].kod
         },
         async GetStatd(hat,ie){
           this.quList=null;
