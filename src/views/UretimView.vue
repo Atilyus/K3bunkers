@@ -146,10 +146,14 @@ export default ({
               kod:null,
               urun:null
             },
+            resul:[
+            {id:null,id_Machine:null,machine_Description:null,id_Phase:null,phase_Description:null,id_State:null,state_Description:null,state_Code:null,batch:null,insert_date:null,begin_date:null,end_date:null,idOrder:null,idProdProcess:null,configurationLine:null,formulaCode:null,materialCode:null}
+            ],
             isemri:"",
             urun:null,
             resturl:"http://10.45.0.97:5000/",//10.45.0.97
             netsisurl:"http://10.50.0.60:4000/",
+            bretonurl:"http://mesapi.breton.it/api/",
             User:cookies.get('username')
         }
     },
@@ -318,6 +322,11 @@ export default ({
             this.urun= tt
         }
     },
+    async breton(){
+      this.resul=null
+      await fetch(this.bretonurl+"Orders/480/prodprocess/0/lines/2/phases/1/getwo").then(response => response.json())
+    .then(data => {this.resul = data} );
+    },
     },
     updated(){
       
@@ -327,6 +336,7 @@ export default ({
     },
     mounted(){
       this.isDisabled=false
+      this.breton()
     }
 })
 </script>

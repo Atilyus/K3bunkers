@@ -8,55 +8,76 @@
       </form> 
     </div>
     </div>
-    <div v-if="auth">
-      
-      
+
+    <div v-if="auth" style="background-color: gainsboro;">
+
       <div style="margin:auto; width:99%; max-width:1300px;" >
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="padding-left: 5px;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="padding-left: 5px">
       <ul class="nav mr-auto">
-        <!--
-        <li v-if="userper" class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white">
-            Yönetim
-          </a>
-          <ul class="dropdown-menu">
-            <li class="dropdown-item"><router-link style="margin-right:10px;" :class="{active:menus.Hat4}" to="/manage">Robot Tanım </router-link></li>
-            <li class="dropdown-item"><router-link style="margin-right:10px"  :class="{active:menus.Hat3}" to="/dokset">Döküm Tanım</router-link></li>
-            <li class="dropdown-item"><router-link style="margin-right:10px"  :class="{active:menus.Bunrap}" to="/bunrap">Bunker Rapor</router-link></li>
-          </ul>
-        </li>
-          -->
-            <li v-if="userper" class="nav-item"><router-link style="margin-right:10px;" :class="{active:menus.Hat4}" to="/manage">Robot Tanım </router-link></li>
-            <li v-if="userper" class="nav-item"><router-link style="margin-right:10px"  :class="{active:menus.Hat3}" to="/dokset">Döküm Tanım</router-link></li>
-            <li v-if="userper" class="nav-item"><router-link style="margin-right:10px"  :class="{active:menus.Bunrap}" to="/bunrap">Bunker Rapor</router-link></li>
-            <li v-if="userper" class="nav-item"><router-link style="margin-right:10px"  :class="{active:menus.Uretim}" to="/uretim">Üretim</router-link></li>
-       <li class="nav-item" style="font-size: 20px !important;">
+
+        <div v-if="userper"  class="dropdown-toggle">
+       <!-- <a class="btn btn-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          | | |
+        </a> -->
+        <ul class="nav mr-auto"> <!-- class="dropdown-menu" style="padding:8px; background-color:dodgerblue;"-->
+          <li class="nav-item"><router-link style="margin-right:10px;" :class="{active:menus.Hat4}" to="/manage">Robot Tanım </router-link></li>
+          <li class="nav-item"><router-link style="margin-right:10px"  :class="{active:menus.Hat3}" to="/dokset">Döküm Tanım</router-link></li>
+          <li class="nav-item"><router-link style="margin-right:10px"  :class="{active:menus.Bunrap}" to="/bunrap">Bunker Rapor</router-link></li>
+          <li class="nav-item"><router-link style="margin-right:10px"  :class="{active:menus.Uretim}" to="/uretim">Üretim</router-link></li>
+        </ul>
+      </div>
+            
+       <li class="nav-item" >
          <router-link  style="margin-right:10px"  :class="{active:menus.Robot}" to="/">Robot </router-link>
        </li>
        
-       <li class="nav-item"  style="font-size: 20px !important;">
+       <li class="nav-item" >
          <router-link  style="margin-right:10px"  :class="{active:menus.Dokum}" to="/dokum"> Döküm  </router-link>
          
        </li>
-       <li class="nav-item" style="font-size: 20px !important;">
+       <li class="nav-item" >
         <router-link  style="margin-right:10px"  :class="{active:menus.Recine}" to="/recine"> Reçine  </router-link>
+       </li>
+
+       <li class="nav-item" >
+        <router-link  style="margin-right:10px"  :class="{active:menus.Hucre}" to="/hucre"> Hücre  </router-link>
        </li>
        
       </ul>
       <ul class="navbar-nav" style="float:right;padding-right: 5px;">
-      <li class="nav-item" style="padding-top:7px">
+      <li v-if="userper" class="nav-item" style="padding-top:7px">
           <h5 style="color:blueviolet">{{LoggedUser}}</h5>
       </li>
-      <li class="nav-item">
-          <button class="btn btn-danger" style="margin-top:5px;margin-left:10px" @click="logout()">Çıkış</button>
-      </li>
+      
     </ul>
+          <button class="btn btn-danger" style="margin-top:5px;margin-right:10px" @click="logout()">Çıkış</button>
+      
     </nav>
     
         <router-view/>
     </div>
   </div>
     </div>
+
+
+    <!-- Modal -->
+	<div class="modal left fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Left Sidebar</h4>
+				</div>
+
+				<div class="modal-body">
+					<p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+					</p>
+				</div>
+
+			</div><!-- modal-content -->
+		</div><!-- modal-dialog -->
+	</div><!-- modal -->
   </template>
   <script>
   import 'bootstrap/dist/css/bootstrap.min.css';
@@ -99,6 +120,7 @@
         this.menus['Hat4']=false;
         this.menus['Recine']=false;
         this.menus['Bunrap']=false;
+        this.menus['Hucre']=false;
         this.menus[type]=true;
       },
     checkuser(){
@@ -176,7 +198,10 @@
     color: #2c3e50;
   }
   nav a.router-link-exact-active {
-    color: #e0eae5;
+    color: #cfd5d1;
+  }
+  .nav-item{
+    font-size: 20px  !important
   }
   
   body {
@@ -288,5 +313,7 @@
   p {
       color: #0000ff
   }
+
+
   </style>
   
