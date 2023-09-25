@@ -217,18 +217,26 @@ export default {
     rawpush(){
       this.rawlist.unshift(this.rawlistemp)
     },
-    AddBS(){
+    async AddBS(){
       if(confirm(this.quDto.order+" Nolu iş emrine Kayıt yapılacak ?")){
       this.quDto.id=1;
       this.quDto.line=4;
-      alert(this.quDto.s2) 
-        axios.post(this.resturl+'add-bs',this.quDto).then(function(response) {
+      let tt =this.quDto.order.toString().split(" ");
+      this.quDto.order=tt[0];
+      try {
+
+        await axios.post(this.resturl+'add-bs',this.quDto).then(function(response) {
         if(response.status == 200){
           alert("Kayıt Başarılı");
         }
         else
           alert("Hata Kayıt Yapılamadı !");
       });
+        
+      } catch (error) {
+        alert(error)
+      }
+        
     }},
     
     showa(){
